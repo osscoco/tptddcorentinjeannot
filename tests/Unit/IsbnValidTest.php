@@ -2,15 +2,12 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Str;
 use PHPUnit\Framework\TestCase;
 
 
 class IsbnValidTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     */
-
     /** @test */
     public function isbn_valid_test()
     {
@@ -20,17 +17,36 @@ class IsbnValidTest extends TestCase
         $isbnCorrectLengthIncorrectFormatFalse = "24I033F166";
         $isbnIncorrectLengthIncorrectFormatFalse = "12F45G7";
 
-        $this->assertTrue(
-            $this->isbnCheck($isbnCorrectLengthCorrectFormatValid) &&
-            $this->isbnCheck($isbnCorrectLengthCorrectFormatFalse) &&
-            $this->isbnCheck($isbnIncorrectLengthCorrectFormatFalse) &&
-            $this->isbnCheck($isbnCorrectLengthIncorrectFormatFalse) &&
-            $this->isbnCheck($isbnIncorrectLengthIncorrectFormatFalse)
-        );
+        $this->assertTrue($this->isbnCheck($isbnCorrectLengthCorrectFormatValid));
+        $this->assertTrue(!$this->isbnCheck($isbnCorrectLengthCorrectFormatFalse));
+        $this->assertTrue(!$this->isbnCheck($isbnIncorrectLengthCorrectFormatFalse));
+        $this->assertTrue(!$this->isbnCheck($isbnCorrectLengthIncorrectFormatFalse));
+        $this->assertTrue(!$this->isbnCheck($isbnIncorrectLengthIncorrectFormatFalse));
     }
 
     public function isbnCheck($isbn)
     {
-        return true;
+        if (Str::length($isbn) != 10) {
+            //throw new \Exception("ISBN must be composed of 10 numeric characters!");
+            return false;
+        }
+
+        $arrayIsbn = Str::slug($isbn, "");
+        $total = 0;
+
+        for ($i = 0; $i < 10; $i++) {
+            if (!is_numeric($arrayIsbn[$i])) {
+                //throw new \Exception("ISBN must be numeric !");
+                return false;
+            }
+            $total = $total + $arrayIsbn[$i] * (10-$i);
+        }
+
+        if ( !(($total % 11) == 0) ) {
+            //throw new \Exception("ISBN must be valid !");
+            return false;
+        } else {
+            return true;
+        }
     }
 }
