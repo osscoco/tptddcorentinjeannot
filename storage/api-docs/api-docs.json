@@ -1,0 +1,300 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "MMT API",
+        "description": "Ceci est une API pour mon application MMT",
+        "contact": {
+            "name": "Corentin JEANNOT",
+            "email": "corentin.jeannot2a@gmail.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "AUTHENTIFICATION"
+                ],
+                "summary": "Généré un jeton d'authentification",
+                "operationId": "ea0c60c8795aeb33c39a1c2001e74b03",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Mot de passe",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "AUTHENTIFICATION"
+                ],
+                "summary": "Enregistrer un utilisateur",
+                "operationId": "f1c98041d92c8158b4bc67af0d1bb9b9",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Mot de passe de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "firstname",
+                        "in": "query",
+                        "description": "Prénom de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "Nom de famille de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dateOfBirth",
+                        "in": "query",
+                        "description": "Date de Naissance de l'utilisateur",
+                        "required": true,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    },
+                    {
+                        "name": "genderId",
+                        "in": "query",
+                        "description": "Identifiant du genre de l'utilisateur",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "rightId",
+                        "in": "query",
+                        "description": "Identifiant du droit de l'utilisateur",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "AUTHENTIFICATION"
+                ],
+                "summary": "Obtenir l'utilisateur en cours",
+                "operationId": "8b6b29397856960a9a62c4608d2938c8",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/logout": {
+            "get": {
+                "tags": [
+                    "AUTHENTIFICATION"
+                ],
+                "summary": "Déconnexion de l'utilisateur en cours",
+                "operationId": "f10e1dbba3101c3ef23ec7cb10af4bdb",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/book/store": {
+            "post": {
+                "tags": [
+                    "BOOK"
+                ],
+                "summary": "Création d'un livre",
+                "operationId": "fba15535c3a6c714cf87df22d4f6837a",
+                "parameters": [
+                    {
+                        "name": "isbn",
+                        "in": "query",
+                        "description": "ISBN du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Titre du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "author",
+                        "in": "query",
+                        "description": "Auteur du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "editor",
+                        "in": "query",
+                        "description": "Editeur du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "isAvailable",
+                        "in": "query",
+                        "description": "Disponibilité du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "formatId",
+                        "in": "query",
+                        "description": "Format du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "Utilisateur ayant le livre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "http",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

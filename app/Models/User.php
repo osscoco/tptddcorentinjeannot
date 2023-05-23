@@ -36,7 +36,7 @@ class User extends Authenticatable
         'rightId' => 'int',
         'genderId' => 'int',
         'email_verified_at' => 'datetime',
-        'email_verified_at' => 'dateOfBirth',
+        'dateOfBirth' => 'datetime',
         'password' => 'encrypted'
     ];
 

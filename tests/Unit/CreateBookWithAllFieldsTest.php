@@ -38,28 +38,28 @@ class CreateBookWithAllFieldsTest extends TestCase
     {
         $rightId = Right::create(
             array(
-                'label' => Str::random(10)
+                'label' => "Admin"
             )
         )->id;
 
         $genderId = Gender::create(
             array(
-                'label' => Str::random(10)
+                'label' => "Male"
             )
         )->id;
 
         Format::create(
             array(
-                'label' => Str::random(10)
+                'label' => "Broché"
             )
         );
 
         User::create(
             array(
-                'email' => Str::random(10) . "@gmail.com",
-                'password' => Hash::make('password'),
-                'firstname' => Str::random(10),
-                'lastname' => Str::random(10),
+                'email' => "corentin.jeannot2a@gmail.com",
+                'password' => Hash::make('Not24get'),
+                'firstname' => "corentin",
+                'lastname' => "jeannot",
                 'dateOfBirth' => Carbon::now(),
                 'genderId' => $genderId,
                 'rightId' => $rightId
@@ -75,10 +75,10 @@ class CreateBookWithAllFieldsTest extends TestCase
 
         $bookIdValid = Book::create(
             array(
-                'isbn' => Str::random(10),
-                'title' => Str::random(10),
-                'author' => Str::random(10),
-                'editor' => Str::random(10),
+                'isbn' => '2490334166',
+                'title' => 'titre 1',
+                'author' => 'Auteur 1',
+                'editor' => 'Editeur 1',
                 'isAvailable' => 1,
                 'formatId' => 1,
                 'userId' => 1
