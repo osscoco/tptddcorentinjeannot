@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use function Termwind\ValueObjects\getValue;
 
 class CreateBookTest extends TestCase
 {
@@ -12,9 +13,18 @@ class CreateBookTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response(): void
     {
-        $response = $this->postJson('/api/book/store',
+        $response = $this->postJson('/api/login',
             [
-                'isbn' => '202020202',
+                'email' => 'corentin.jeannot2a@gmail.com',
+                'password' => 'Not24get'
+            ]
+        )->assertStatus(200);
+
+        $JWTtoken = $response->decodeResponseJson()["token"];
+
+        $response1 = $this->withHeaders(['Authorization' => 'Bearer ' . $JWTtoken ])->postJson('/api/book/store',
+            [
+                'isbn' => '2490334166',
                 'title' => 'titre 1',
                 'author' => 'Auteur 1',
                 'editor' => 'Editeur 1',
@@ -24,6 +34,6 @@ class CreateBookTest extends TestCase
             ]
         );
 
-        $response->assertStatus(201)->assertJson(['created' => true]);
+        $response1->assertStatus(200)->assertJson(['status' => true]);
     }
 }
