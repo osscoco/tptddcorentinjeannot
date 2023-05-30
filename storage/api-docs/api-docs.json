@@ -284,6 +284,205 @@
                 ]
             }
         },
+        "/api/books": {
+            "get": {
+                "tags": [
+                    "BOOK"
+                ],
+                "summary": "Obtenir les livres",
+                "operationId": "a9d13283dfab262e97af3c914d51b7a8",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/book/show/{id}": {
+            "get": {
+                "tags": [
+                    "BOOK"
+                ],
+                "summary": "Afficher un livre",
+                "operationId": "092bc5685e8f32077f56e12d7610efe8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identifiant",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/book/update/{id}": {
+            "put": {
+                "tags": [
+                    "BOOK"
+                ],
+                "summary": "Mise à jour d'un livre",
+                "operationId": "8efe66240e63346aa97b4b772eea13d3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identifiant",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "isbn",
+                        "in": "query",
+                        "description": "ISBN du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Titre du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "author",
+                        "in": "query",
+                        "description": "Auteur du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "editor",
+                        "in": "query",
+                        "description": "Editeur du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "isAvailable",
+                        "in": "query",
+                        "description": "Disponibilité du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "formatId",
+                        "in": "query",
+                        "description": "Format du livre",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "Utilisateur ayant le livre",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/book/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "BOOK"
+                ],
+                "summary": "Suppression d'un livre",
+                "operationId": "451b09c99cc466aa6567ca0047199465",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identifiant",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
         "/api/generate-data": {
             "get": {
                 "tags": [
