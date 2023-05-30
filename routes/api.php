@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\GenerateDataController;
+use App\Http\Controllers\SwaggerController;
+use App\Http\Controllers\UngenerateDataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('json.in.headers')->group(function () {
 
     Route::post('/login', [AuthentificationController::class, 'login']);
+    Route::get('/swagger/generate', [SwaggerController::class, 'generate']);
+    Route::get('/generate-data', [GenerateDataController::class, 'index']);
+    Route::get('/ungenerate-data', [UnGenerateDataController::class, 'index']);
 
     Route::middleware('auth:sanctum')->group(function () {
 
@@ -25,6 +31,7 @@ Route::middleware('json.in.headers')->group(function () {
 
         Route::middleware('admin')->group(function () {
 
+            Route::post('/register', [AuthentificationController::class, 'register']);
             Route::post('/book/store', [BookController::class, 'store']);
         });
     });

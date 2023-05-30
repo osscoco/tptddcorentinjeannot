@@ -283,6 +283,81 @@
                     }
                 ]
             }
+        },
+        "/api/generate-data": {
+            "get": {
+                "tags": [
+                    "GENERATIONS"
+                ],
+                "summary": "Génération des données",
+                "operationId": "8f3095bce4bb496fce72247e2423af04",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/swagger/generate": {
+            "get": {
+                "tags": [
+                    "SWAGGERS"
+                ],
+                "summary": "Generation de la documentation swagger",
+                "operationId": "67836125290542f490979c2e45723445",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas d'autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/ungenerate-data": {
+            "get": {
+                "tags": [
+                    "GENERATIONS"
+                ],
+                "summary": "Dégénération des données redondantes",
+                "operationId": "a4ea7bf3452dec857a2f6a72838614f1",
+                "responses": {
+                    "200": {
+                        "description": "Succès"
+                    },
+                    "401": {
+                        "description": "Pas autorisé"
+                    },
+                    "422": {
+                        "description": "Entité non traitable"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
         }
     },
     "components": {
