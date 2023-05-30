@@ -28,11 +28,15 @@ Route::middleware('json.in.headers')->group(function () {
 
         Route::get('/user', [AuthentificationController::class, 'user']);
         Route::get('/logout', [AuthentificationController::class, 'logout']);
+        Route::get('/books', [BookController::class, 'index']);
+        Route::get('/book/show/{id}', [BookController::class, 'show']);
 
         Route::middleware('admin')->group(function () {
 
             Route::post('/register', [AuthentificationController::class, 'register']);
             Route::post('/book/store', [BookController::class, 'store']);
+            Route::put('/book/update/{id}', [BookController::class, 'update']);
+            Route::delete('/book/delete/{id}', [BookController::class, 'destroy']);
         });
     });
 });
