@@ -67,14 +67,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Tests
 
-php artisan test --testsuite=Unit
-php artisan test --testsuite=Feature 
+- php artisan test --testsuite=Unit
+- php artisan test --testsuite=Feature 
 
 ## Launch server
 
-Launch apache2, Mysql
-Modify .env (mysql env var)
-Launch Migrations using : php artisan migrate:fresh
-Launch server using : php artisan serve
-Launch website localhost:8000/api/documentation 
-Launch route swagger to reload all routes
+- Launch apache2, Mysql
+- Modify .env (mysql env var)
+- Launch Migrations using : php artisan migrate:fresh
+- Launch server using : php artisan serve
+- Launch website localhost:8000/api/documentation 
+- Launch route swagger to reload all routes
