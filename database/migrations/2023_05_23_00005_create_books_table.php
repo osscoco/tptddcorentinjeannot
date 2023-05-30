@@ -22,8 +22,8 @@ class CreateBooksTable extends Migration
             $table->unsignedBigInteger('formatId');
             $table->foreign('formatId')->references('id')->on('formats');
 
-            $table->unsignedBigInteger('rightId');
-            $table->foreign('rightId')->references('id')->on('rights');
+            $table->unsignedBigInteger('userId');
+            $table->foreign('userId')->references('id')->on('users');
 
             $table->timestamps();
         });
